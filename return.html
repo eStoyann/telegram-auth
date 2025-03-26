@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Redirect</title>
+  <script>
+    window.addEventListener("message", function(event) {
+      if (event.origin !== "https://oauth.telegram.org") return;
+
+      const user = event.data;
+      console.log("✅ User from Telegram:", user);
+
+      // Send to Swift via WebKit bridge
+      if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.telegramAuth) {
+        window.webkit.messageHandlers.telegramAuth.postMessage(user);
+      } else {
+        console.log("❌ WebKit bridge not available");
+      }
+    }, false);
+  </script>
+</head>
+<body>
+  <h2>Authenticating with Telegram...</h2>
+</body>
+</html>
