@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Telegram Callback</title>
+  <script>
+    console.log("🚀 return.html script loaded");
+
+    window.addEventListener("message", function(event) {
+      console.log("📩 Got message:", event.origin, event.data);
+    });
+  </script>
+</head>
+<body>
+  <h2>Waiting for Telegram login...</h2>
+</body>
+</html>
